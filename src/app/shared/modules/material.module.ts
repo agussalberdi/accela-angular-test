@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatButtonModule,
     MatFormFieldModule,
     MatToolbarModule,
-    MatTabsModule
+    MatTabsModule,
+    MatCardModule
   ],
   exports: [
     FlexLayoutModule,
@@ -21,7 +23,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatButtonModule,
     MatFormFieldModule,
     MatToolbarModule,
-    MatTabsModule
+    MatTabsModule,
+    MatCardModule
   ]
 })
 export class MaterialModule {}

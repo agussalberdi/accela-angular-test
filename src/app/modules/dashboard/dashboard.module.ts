@@ -7,10 +7,11 @@ import { SharedModule } from './../../shared/shared.module';
 
 import { DashboardComponent } from './dashboard.component';
 import { PostsComponent } from './components/posts/posts.component';
+import { PostComponent } from './components/post/post.component';
 
 
 @NgModule({
-  declarations: [DashboardComponent, PostsComponent],
+  declarations: [DashboardComponent, PostsComponent, PostComponent],
   imports: [
     CommonModule,
     MaterialModule,
