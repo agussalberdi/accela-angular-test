@@ -1,0 +1,6 @@
+<app-header></app-header>
+<mat-tab-group>
+    <mat-tab label="User Posts"><app-posts [isUserPosts]="true"></app-posts></mat-tab>
+    <mat-tab label="Other Posts"><app-posts [isUserPosts]="false"></app-posts></mat-tab>
+</mat-tab-group>
+
