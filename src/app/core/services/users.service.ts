@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
-import { User } from './../../shared/interfaces/user.interface';
+import { User, Post } from './../../shared/interfaces/index';
 
 @Injectable({
   providedIn: 'root'
@@ -44,12 +44,23 @@ export class UsersService {
     this.user.next(data);
   }
 
-  getUserPosts(userId: number): Observable<any> {
-    return this.http.get<any>(`${environment.api_url}/posts?userId=${userId}`);
+  /**
+   * @desc Method for retrieving user posts from the api.
+   * @param userId: number
+   */
+  getUserPosts(userId: number): Observable<Post[]> {
+    return this.http.get<Post[]>(`${environment.api_url}/posts?userId=${userId}`);
   }
 
-  getAllPosts(): Observable<any> {
-    return this.http.get<any>(`${environment.api_url}/posts`);
+  /**
+   * @desc Method for retrieving all the posts from the api.
+   */
+  getAllPosts(): Observable<Post[]> {
+    return this.http.get<Post[]>(`${environment.api_url}/posts`);
+  }
+
+  createPost(post: any): Observable<any> {
+    return this.http.post<any>(`${environment.api_url}/posts`, {post});
   }
 
 }

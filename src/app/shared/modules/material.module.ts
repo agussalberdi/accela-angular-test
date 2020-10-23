@@ -6,6 +6,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   imports: [
@@ -15,7 +17,9 @@ import { MatCardModule } from '@angular/material/card';
     MatFormFieldModule,
     MatToolbarModule,
     MatTabsModule,
-    MatCardModule
+    MatCardModule,
+    MatIconModule,
+    MatDialogModule
   ],
   exports: [
     FlexLayoutModule,
@@ -24,7 +28,9 @@ import { MatCardModule } from '@angular/material/card';
     MatFormFieldModule,
     MatToolbarModule,
     MatTabsModule,
-    MatCardModule
+    MatCardModule,
+    MatIconModule,
+    MatDialogModule
   ]
 })
 export class MaterialModule {}
