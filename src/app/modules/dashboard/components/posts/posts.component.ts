@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { mergeMap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
-import { UsersService } from './../../../../core/services/users.service';
-import { Post } from './../../../../shared/interfaces/post.interface';
+import { UsersService } from '@core/services/users.service';
+import { Post } from '@shared/interfaces/post.interface';
 import { NewPostDialogComponent } from './../new-post-dialog/new-post-dialog.component';
 
 @Component({
