@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from '@environments/environment';
 import { User, Post } from '@shared/interfaces/index';
@@ -24,7 +24,9 @@ export class UsersService {
    * @desc Method for retrieving all the users from the api.
    */
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${environment.api_url}/users`);
+    return this.http.get<User[]>(`${environment.api_url}/users`).pipe(
+      catchError(err => throwError(err))
+    );
   }
 
   /**
@@ -35,7 +37,7 @@ export class UsersService {
     return this.http.get<User[]>(`${environment.api_url}/users?email=${email}`)
       .pipe(
         map(value => value[0]),
-        catchError(err => of(err))
+        catchError(err => throwError(err))
       );
   }
 
@@ -60,21 +62,27 @@ export class UsersService {
    * @param userId: number
    */
   getUserPosts(userId: number): Observable<Post[]> {
-    return this.http.get<Post[]>(`${environment.api_url}/posts?userId=${userId}`);
+    return this.http.get<Post[]>(`${environment.api_url}/posts?userId=${userId}`).pipe(
+      catchError(err => throwError(err))
+    );
   }
 
   /**
    * @desc Method for retrieving all the posts from the api.
    */
   getAllPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(`${environment.api_url}/posts`);
+    return this.http.get<Post[]>(`${environment.api_url}/posts`).pipe(
+      catchError(err => throwError(err))
+    );
   }
 
   /**
    * @desc Method for creating a new Post.
    */
   createPost(post: any): Observable<any> {
-    return this.http.post<any>(`${environment.api_url}/posts`, {post});
+    return this.http.post<any>(`${environment.api_url}/posts`, {post}).pipe(
+      catchError(err => throwError(err))
+    );
   }
 
 }

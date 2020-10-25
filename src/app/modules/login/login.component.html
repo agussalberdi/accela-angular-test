@@ -1,7 +1,7 @@
 <div class="container" fxLayout="column" fxLayoutAlign="center center">
-    <mat-form-field class="example-full-width">
+    <mat-form-field>
         <mat-label>Email</mat-label>
-        <input matInput type="email" placeholder="Ex. pat@example.com" #input>
+        <input matInput type="email" #input>
     </mat-form-field>
     <button mat-flat-button (click)="handleLogin(input.value)">Login</button>
 </div>
