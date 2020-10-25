@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   }
 
   private openSnackBar(message: string): void {
-    this.snackBar.open(message, null, {
+    this.snackBar.open(message, 'ACCEPT', {
       duration: 2000,
       verticalPosition: 'bottom'
     });
