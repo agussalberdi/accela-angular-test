@@ -1,6 +1,8 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
+import { UsersService } from '@core/services/users.service';
+import { User } from '@shared/interfaces/user.interface';
 
 @Component({
   selector: 'app-new-post-dialog',
@@ -12,24 +14,31 @@ export class NewPostDialogComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<NewPostDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    private fb: FormBuilder) {}
+    private fb: FormBuilder,
+    private usersService: UsersService) {}
 
   ngOnInit(): void {
-    this.initForm();
+    this.usersService.user.subscribe((user: User) => this.initForm(user.id));
   }
 
-  private initForm(): void {
+  private initForm(userId: number): void {
     this.newPostForm = this.fb.group({
-      title: ['', Validators.required],
-      body: ['', Validators.required]
+      userId: [userId, Validators.required],
+      title: ['', [Validators.required, Validators.minLength(6)]],
+      body: ['', [Validators.required, Validators.maxLength(150)]]
     });
   }
 
   onSubmit(): void {
-    let newPost = this.newPostForm.value;
-    newPost = {...newPost, userId: 1};
+    const newPost = this.newPostForm.value;
     this.dialogRef.close(newPost);
   }
 
+  get formTitle(): AbstractControl {
+    return this.newPostForm.get('title');
+  }
+
+  get formBody(): AbstractControl {
+    return this.newPostForm.get('body');
+  }
 }

@@ -1,3 +1,7 @@
-<mat-toolbar>
+<mat-toolbar fxLayoutAlign="space-between center">
     <span>Accela App</span>
+    <div *ngIf="(user$ | async) as user" class="user">
+        <span class="text">Welcome {{user.name}}</span>
+        <mat-icon>favorite</mat-icon>
+    </div>
 </mat-toolbar>

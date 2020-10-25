@@ -1,6 +1,9 @@
 .post {
-    max-width: 400px;
+    width: 300px;
     height: 300px;
     margin: 20px;
-    background-color: gainsboro;
+
+    &__body {
+        line-break: anywhere;
+    }
 }

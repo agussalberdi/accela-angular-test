@@ -1,14 +1,26 @@
 <h1>New Post</h1>
-<form [formGroup]="newPostForm" (ngSubmit)="onSubmit()">  
+<form [formGroup]="newPostForm" (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="center center">  
     <mat-form-field appearance="fill">
         <mat-label>Title</mat-label>
         <input matInput formControlName="title">
+        <mat-error *ngIf="formTitle.hasError('required')">
+            This field is required.
+        </mat-error>
+        <mat-error *ngIf="formTitle.hasError('minlength')">
+            The title must have at least 6 characters.
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
         <mat-label>Body</mat-label>
         <textarea matInput formControlName="body"></textarea>
+        <mat-error *ngIf="formBody.hasError('required')">
+            This field is required.
+        </mat-error>
+        <mat-error *ngIf="formBody.hasError('maxlength')">
+            The body has a limit of 150 characters.
+        </mat-error>
     </mat-form-field>
 
-    <button mat-raised-button color="primary" type="submit" [disabled]="!newPostForm.valid">CREATE</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!newPostForm.valid" id="create-btn">CREATE</button>
 </form>

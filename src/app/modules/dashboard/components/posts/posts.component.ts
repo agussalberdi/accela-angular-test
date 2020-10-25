@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { mergeMap } from 'rxjs/operators';
+import { mergeMap, takeWhile } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { UsersService } from '@core/services/users.service';
 import { Post } from '@shared/interfaces/post.interface';
@@ -32,15 +32,17 @@ export class PostsComponent implements OnInit {
 
   createPost(): void {
     const dialogRef = this.dialog.open(NewPostDialogComponent, {
-      width: '250px'
+      width: '350px'
     });
 
     dialogRef.afterClosed().pipe(
-      mergeMap(value => this.usersService.createPost(value))
+      takeWhile(r => r),
+      mergeMap(value => {
+        return this.usersService.createPost(value);
+      })
     ).subscribe((response) => {
-      const post = {...response.post, ...response.id};
+      const post = {...response.id, ...response.post};
       this.posts.push(post);
-      console.log(this.posts);
     });
   }
 

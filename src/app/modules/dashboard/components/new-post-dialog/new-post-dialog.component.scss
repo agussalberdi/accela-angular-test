@@ -1,0 +1,18 @@
+mat-form-field {
+    width: 280px;
+    margin-top: 15px;
+}
+
+mat-error {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+#create-btn {
+    margin-top: 15px;
+    transition: all ease-in 300ms;
+
+    &:hover {
+        opacity: 0.7;
+    }
+}

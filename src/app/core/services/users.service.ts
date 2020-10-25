@@ -45,6 +45,14 @@ export class UsersService {
   }
 
   /**
+   * @desc Method for logout the user within the app.
+   * @param data: User
+   */
+  logout(): void {
+    this.user.next(null);
+  }
+
+  /**
    * @desc Method for retrieving user posts from the api.
    * @param userId: number
    */
