@@ -34,3 +34,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - Angular CLI
 - RxJs
 - TypeScript
+
+## Hosted Application
+
+- URL: https://accela-angular-test.netlify.app/
