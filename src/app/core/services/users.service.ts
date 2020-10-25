@@ -5,6 +5,9 @@ import { catchError, map } from 'rxjs/operators';
 import { environment } from '@environments/environment';
 import { User, Post } from '@shared/interfaces/index';
 
+/**
+ * @desc This service allow us to retrieve data from an external API and realize the login process.
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -67,6 +70,9 @@ export class UsersService {
     return this.http.get<Post[]>(`${environment.api_url}/posts`);
   }
 
+  /**
+   * @desc Method for creating a new Post.
+   */
   createPost(post: any): Observable<any> {
     return this.http.post<any>(`${environment.api_url}/posts`, {post});
   }

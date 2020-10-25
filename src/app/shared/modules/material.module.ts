@@ -8,6 +8,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatTabsModule,
     MatCardModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
   ],
   exports: [
     FlexLayoutModule,
@@ -30,7 +32,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatTabsModule,
     MatCardModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
   ]
 })
 export class MaterialModule {}
