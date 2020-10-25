@@ -1,16 +1,18 @@
-<button 
-    *ngIf="isUserPosts" 
-    mat-icon-button color="primary" 
-    aria-label="New Post"
-    (click)="createPost()"
->
-    <mat-icon>add</mat-icon>
-</button>
-<div class="posts" fxLayout="row wrap" fxFlexAlign="center center">
-    <ng-container *ngIf="posts.length > 0; else noPostsAvailable">
-        <app-post *ngFor="let post of posts" [post]="post"></app-post>
-    </ng-container>
-    <ng-template #noPostsAvailable>
-        <p>There is no posts available.</p>
-    </ng-template>
-</div>
+<section id="posts">
+    <button 
+        *ngIf="isUserPosts" 
+        mat-icon-button color="primary" 
+        aria-label="New Post"
+        (click)="createPost()"
+    >
+        <mat-icon>add_circle_outline</mat-icon>
+    </button>
+    <div fxLayout="row wrap" fxFlexAlign="center center">
+        <ng-container *ngIf="posts.length > 0; else noPostsAvailable">
+            <app-post *ngFor="let post of posts" [post]="post"></app-post>
+        </ng-container>
+        <ng-template #noPostsAvailable>
+            <p>There is no posts available.</p>
+        </ng-template>
+    </div>
+</section>
