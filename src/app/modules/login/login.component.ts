@@ -15,15 +15,15 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  async handleLogin(email: string) {
-    await this.usersService.getUser(email).subscribe(value => {
+  handleLogin(email: string): void {
+    this.usersService.getUser(email).subscribe(value => {
       if (value !== undefined) {
         this.usersService.login(value);
+        this.router.navigate(['/dashboard']);
       } else {
         this.openSnackBar('The email address is not valid. Try again!');
       }
     });
-    this.router.navigate(['/dashboard']);
   }
 
   private openSnackBar(message: string): void {

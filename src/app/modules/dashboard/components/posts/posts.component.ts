@@ -13,6 +13,7 @@ import { NewPostDialogComponent } from './../new-post-dialog/new-post-dialog.com
 export class PostsComponent implements OnInit {
   @Input() isUserPosts: boolean;
   posts: Post[] = [];
+  filteredPosts: Post[] = [];
 
   constructor(private usersService: UsersService, public dialog: MatDialog) { }
 
@@ -24,9 +25,15 @@ export class PostsComponent implements OnInit {
     if (this.isUserPosts) {
       this.usersService.user.pipe(
         mergeMap(user => this.usersService.getUserPosts(user.id))
-      ).subscribe(posts => this.posts = posts);
+      ).subscribe(posts => {
+        this.posts = posts;
+        this.filteredPosts = posts;
+      });
     } else {
-      this.usersService.getAllPosts().subscribe(posts => this.posts = posts);
+      this.usersService.getAllPosts().subscribe(posts => {
+        this.posts = posts;
+        this.filteredPosts = posts;
+      });
     }
   }
 
@@ -42,8 +49,11 @@ export class PostsComponent implements OnInit {
       })
     ).subscribe((response) => {
       const post = {...response.id, ...response.post};
-      this.posts.push(post);
+      this.filteredPosts.push(post);
     });
   }
 
+  handleFilter(filteredData: Post[]): void {
+    this.filteredPosts = filteredData;
+  }
 }

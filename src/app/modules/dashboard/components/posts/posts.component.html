@@ -1,18 +1,19 @@
 <section id="posts">
     <button 
         *ngIf="isUserPosts" 
-        mat-icon-button color="primary" 
+        mat-raised-button color="primary" 
         aria-label="New Post"
         (click)="createPost()"
     >
-        <mat-icon>add_circle_outline</mat-icon>
+        NEW POST
     </button>
+    <app-filter [data]="posts" (filteredData)="handleFilter($event)"></app-filter>
     <div fxLayout="row wrap" fxFlexAlign="center center">
-        <ng-container *ngIf="posts.length > 0; else noPostsAvailable">
-            <app-post *ngFor="let post of posts" [post]="post"></app-post>
+        <ng-container *ngIf="filteredPosts.length > 0; else noPostsAvailable">
+            <app-post *ngFor="let post of filteredPosts" [post]="post"></app-post>
         </ng-container>
         <ng-template #noPostsAvailable>
-            <p>There is no posts available.</p>
+            <p class="empty">There is no posts available.</p>
         </ng-template>
     </div>
 </section>
