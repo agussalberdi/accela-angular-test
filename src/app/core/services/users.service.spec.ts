@@ -55,16 +55,15 @@ describe('UsersService', () => {
       };
 
       service.getUser(mockEmail)
-        .pipe(
-          map(user => user[0])
-        )
         .subscribe(user => {
-          expect(user.id).toEqual(mockUser.id);
-          expect(user.name).toEqual(mockUser.name);
-          expect(user.username).toEqual(mockUser.username);
-          expect(user.email).toEqual(mockUser.email);
-          expect(user.website).toEqual(mockUser.website);
-          expect(user.phone).toEqual(mockUser.phone);
+          if (user !== undefined) {
+            expect(user.id).toEqual(mockUser.id);
+            expect(user.name).toEqual(mockUser.name);
+            expect(user.username).toEqual(mockUser.username);
+            expect(user.email).toEqual(mockUser.email);
+            expect(user.website).toEqual(mockUser.website);
+            expect(user.phone).toEqual(mockUser.phone);
+          }
         });
 
       const req = httpTestingController.expectOne(
