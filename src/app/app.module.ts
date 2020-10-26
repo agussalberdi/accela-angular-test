@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { LoginModule } from './modules/login/login.module';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SharedModule } from './shared/shared.module';
     MaterialModule,
     LoginModule,
     DashboardModule,
-    SharedModule
+    SharedModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

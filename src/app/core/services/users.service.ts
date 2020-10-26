@@ -24,9 +24,7 @@ export class UsersService {
    * @desc Method for retrieving all the users from the api.
    */
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${environment.api_url}/users`).pipe(
-      catchError(err => throwError(err))
-    );
+    return this.http.get<User[]>(`${environment.api_url}/users`);
   }
 
   /**
@@ -36,8 +34,7 @@ export class UsersService {
   getUser(email: string): Observable<User> {
     return this.http.get<User[]>(`${environment.api_url}/users?email=${email}`)
       .pipe(
-        map(value => value[0]),
-        catchError(err => throwError(err))
+        map(value => value[0])
       );
   }
 
@@ -62,27 +59,21 @@ export class UsersService {
    * @param userId: number
    */
   getUserPosts(userId: number): Observable<Post[]> {
-    return this.http.get<Post[]>(`${environment.api_url}/posts?userId=${userId}`).pipe(
-      catchError(err => throwError(err))
-    );
+    return this.http.get<Post[]>(`${environment.api_url}/posts?userId=${userId}`);
   }
 
   /**
    * @desc Method for retrieving all the posts from the api.
    */
   getAllPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(`${environment.api_url}/posts`).pipe(
-      catchError(err => throwError(err))
-    );
+    return this.http.get<Post[]>(`${environment.api_url}/posts`);
   }
 
   /**
    * @desc Method for creating a new Post.
    */
   createPost(post: any): Observable<any> {
-    return this.http.post<any>(`${environment.api_url}/posts`, {post}).pipe(
-      catchError(err => throwError(err))
-    );
+    return this.http.post<any>(`${environment.api_url}/posts`, {post});
   }
 
 }
