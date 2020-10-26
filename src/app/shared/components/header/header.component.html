@@ -4,4 +4,7 @@
         <span class="text">Welcome {{user.name}}</span>
         <mat-icon>favorite</mat-icon>
     </div>
+    <button mat-icon-button *ngIf="(user$ | async)" (click)="logout()">
+        <mat-icon>power_settings_new</mat-icon>
+    </button>
 </mat-toolbar>

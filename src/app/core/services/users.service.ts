@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
@@ -14,7 +15,7 @@ import { User, Post } from '@shared/interfaces/index';
 export class UsersService {
   private user$ = new BehaviorSubject(null);
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   get user(): BehaviorSubject<User | null> {
     return this.user$;
@@ -48,10 +49,10 @@ export class UsersService {
 
   /**
    * @desc Method for logout the user within the app.
-   * @param data: User
    */
   logout(): void {
     this.user.next(null);
+    this.router.navigate(['login']);
   }
 
   /**

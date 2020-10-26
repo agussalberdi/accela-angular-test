@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { filter } from 'rxjs/operators';
 import { UsersService } from '@core/services/users.service';
 import { User } from '@shared/interfaces/user.interface';
 
@@ -18,7 +19,9 @@ export class NewPostDialogComponent implements OnInit {
     private usersService: UsersService) {}
 
   ngOnInit(): void {
-    this.usersService.user.subscribe((user: User) => this.initForm(user.id));
+    this.usersService.user.pipe(
+      filter(user => user !== null),
+    ).subscribe((user: User) => this.initForm(user.id));
   }
 
   private initForm(userId: number): void {

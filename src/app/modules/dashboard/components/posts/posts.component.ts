@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { mergeMap, takeWhile } from 'rxjs/operators';
+import { filter, mergeMap, takeWhile } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { UsersService } from '@core/services/users.service';
 import { Post } from '@shared/interfaces/post.interface';
@@ -24,6 +24,7 @@ export class PostsComponent implements OnInit {
   private fetchPosts(): void {
     if (this.isUserPosts) {
       this.usersService.user.pipe(
+        filter(user => user !== null),
         mergeMap(user => this.usersService.getUserPosts(user.id))
       ).subscribe(posts => {
         this.posts = posts;
