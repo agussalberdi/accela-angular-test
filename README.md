@@ -44,3 +44,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Hosted Application
 
 - URL: https://accela-angular-test.netlify.app/
+
+## How it looks?
+
+<img width="1470" alt="Screenshot 2024-01-10 at 13 23 19" src="https://github.com/agussalberdi/accela-angular-test/assets/43733257/f49b3969-3504-43b7-80c1-41f5dcce9c8d">
+
+
+
+
